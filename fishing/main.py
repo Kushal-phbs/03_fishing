@@ -25,6 +25,8 @@ def main():
                 running = False
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 engine.start_cast()
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_r:
+                engine.start_new_round()
 
         engine.update()
         engine.draw(screen, font)
