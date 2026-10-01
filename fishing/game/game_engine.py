@@ -17,11 +17,29 @@ from game.renderer import WIDTH, HEIGHT, SURFACE_Y, MAX_DEPTH_Y
 
 class GameEngine:
     def __init__(self):
-        self.hook = Hook(x=WIDTH / 2, surface_y=SURFACE_Y, max_depth_y=MAX_DEPTH_Y, speed=5)
+        self.hook = Hook(
+            x=WIDTH / 2, surface_y=SURFACE_Y, max_depth_y=MAX_DEPTH_Y, speed=5
+        )
         self.fish_list = [
             Fish(x=100, y=180, speed=2, point_value=10, color=(80, 180, 220)),
-            Fish(x=400, y=280, speed=-2, point_value=10, color=(80, 180, 220)),
-            Fish(x=250, y=380, speed=3, point_value=10, color=(80, 180, 220)),
+            Fish(
+                x=400,
+                y=280,
+                speed=-3,
+                width=28,
+                height=14,
+                point_value=5,
+                color=(110, 210, 120),
+            ),
+            Fish(
+                x=250,
+                y=380,
+                speed=1,
+                width=48,
+                height=24,
+                point_value=25,
+                color=(245, 165, 60),
+            ),
         ]
         self.hooked_fish = None
         self.score = 0
@@ -52,6 +70,7 @@ class GameEngine:
 
     def draw(self, surface, font):
         from game import renderer
+
         draw_list = list(self.fish_list)
         if self.hooked_fish is not None:
             draw_list.append(self.hooked_fish)
